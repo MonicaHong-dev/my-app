@@ -1,0 +1,9 @@
+{
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": null,
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": true,
+    "prettier.bracketSameLine": true,
+    "prettier.htmlWhitespaceSensitivity": "ignore",
+    "prettier.singleQuote": true
+}
