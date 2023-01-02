@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import AddTodo from '../AddTodo/AddTodo';
 // import Header from '../Header/Header';
 import Todo from '../Todo/Todo';
+import styles from './TodoList.module.css';
 
 export default function TodoList({ filter }) {
   const [todos, setTodos] = useState([
@@ -18,10 +19,16 @@ export default function TodoList({ filter }) {
 
   return (
     <>
-      <section>
-        <ul>
+      <section className={styles.container}>
+        <ul className={styles.list}>
           {filteredTodos.map((todo) => (
-            <Todo key={todo.id} todo={todo} onUpdated={handleUpdated} onDelete={handleDelete} />
+            <Todo
+              className={styles.todo}
+              key={todo.id}
+              todo={todo}
+              onUpdated={handleUpdated}
+              onDelete={handleDelete}
+            />
           ))}
         </ul>
         <AddTodo onAdd={handleAdd} />

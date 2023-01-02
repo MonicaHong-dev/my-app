@@ -1,14 +1,32 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { DarkModeContext } from '../Context/DarkModeContext';
+import styles from './Header.module.css';
 
 export default function Header({ filters, filter, onFilterChange }) {
+  const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
   return (
-    <ul>
-      {filters.map((value, index) => (
-        <li key={index}>
-          <button onClick={() => onFilterChange(value)}>{value}</button>
-        </li>
-      ))}
-    </ul>
+    <header className={styles.header}>
+      <ul className={styles.filters}>
+        <button onClick={() => toggleDarkMode()}>Mode</button>
+        <p>
+          Mode:
+          {darkMode ? (
+            <span style={{ backgroundColor: 'black', color: 'white' }}>Dark</span>
+          ) : (
+            <span>Light</span>
+          )}
+        </p>
+        {filters.map((value, index) => (
+          <li key={index}>
+            <button
+              className={`${styles.filter} ${filter === value && styles.selected}`}
+              onClick={() => onFilterChange(value)}>
+              {value}
+            </button>
+          </li>
+        ))}
+      </ul>
+    </header>
   );
 }
 
